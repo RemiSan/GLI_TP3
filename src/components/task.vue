@@ -17,7 +17,7 @@
 
       <md-card-actions>
         <md-button class="md-icon-button md-accent" v-on:click="deleteTask()">
-          <md-icon>thumb_up</md-icon>
+          <md-icon>delete_forever</md-icon>
         </md-button>
         <md-checkbox v-model="task.done">Done</md-checkbox>
       </md-card-actions>
@@ -44,7 +44,6 @@ export default class TaskVue extends Vue {
 
   deleteTask(){
     this.task.delete();
-    console.log('delete');
   }
 }
 </script>
