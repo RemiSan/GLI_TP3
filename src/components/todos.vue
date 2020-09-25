@@ -9,6 +9,8 @@
         <br>
         <md-button class="md-raised md-primary" v-on:click="addTask()">Add</md-button>
         <br>
+        <md-button class="md-raised md-primary" v-on:click="selectAllTasks()">Select all tasks</md-button>
+        <br>
         <md-checkbox v-model="displayDoneTasks">Display done task</md-checkbox>
         <br>
         <md-checkbox v-model="displayNotDoneTasks">Display not done task</md-checkbox>
@@ -44,6 +46,12 @@ export default class Todos extends Vue {
       this.tasks.push(new Task(this.nameTask, this.idTask++, false));
       this.nameTask = "";
     }
+  }
+
+  selectAllTasks(): void {
+    this.tasks.forEach(el => {
+        el.done = true;
+    });
   }
 }
 </script>
