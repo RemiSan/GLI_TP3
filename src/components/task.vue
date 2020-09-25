@@ -3,15 +3,16 @@
       <md-card-header>
         <md-card-header-text>
           <md-card-content>
-            
             {{this.task.name}}
           </md-card-content>
         </md-card-header-text>
       </md-card-header>
 
       <md-card-actions>
-        <md-button class="md-accent" v-on:click="deleteTask()">Delete</md-button>
-        <md-checkbox v-model="this.task.done">Done</md-checkbox>
+        <md-button class="md-icon-button md-accent" v-on:click="deleteTask()">
+          <md-icon>thumb_up</md-icon>
+        </md-button>
+        <md-checkbox v-model="task.done">Done</md-checkbox>
       </md-card-actions>
     </md-card>
     

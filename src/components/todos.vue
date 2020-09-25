@@ -9,9 +9,13 @@
         <br>
         <md-button class="md-raised md-primary" v-on:click="addTask()">Add</md-button>
         <br>
+        <md-button class="md-raised md-primary" v-on:click="selectAllTasks()">Select all tasks</md-button>
+        <br>
         <md-checkbox v-model="displayDoneTasks">Display done task</md-checkbox>
         <br>
         <md-checkbox v-model="displayNotDoneTasks">Display not done task</md-checkbox>
+        <br>
+        <md-button class="md-raised md-primary" v-on:click="deleteDoneTasks()">Delete done tasks</md-button>
         <TaskVue v-for="task in getListFiltered()" :key="task.id" v-bind:task="task"/> 
     </div>
     <footer v-if="tasks.length > 0">
@@ -54,8 +58,24 @@ export default class Todos extends Vue implements ITaskListObserver {
   didDelete(task: Task) {
     const index: number = this.tasks.indexOf(task);
     if (index !== -1) {
-        this.tasks.splice(index, 1);
-    } 
+      this.tasks.splice(index, 1);
+    }
+  }
+  selectAllTasks(): void {
+    this.tasks.forEach((el) => {
+      el.done = true;
+    });
+  }
+
+  deleteDoneTasks(): void {
+    this.tasks
+      .filter((el) => el.done)
+      .forEach((element) => {
+        this.tasks.splice(
+          this.tasks.findIndex((i) => i === element),
+          1
+        );
+      });
   }
 }
 </script>
