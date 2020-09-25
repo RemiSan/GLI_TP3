@@ -5,7 +5,7 @@
           <md-card-content v-if="!toggleNameEdit">
             {{task.name}}
           </md-card-content>
-          <md-field :class="{'md-invalid': nameTask.length == 0}" v-if="toggleNameEdit">
+          <md-field :class="{'md-invalid': task.name.length == 0}" v-if="toggleNameEdit">
             <md-textarea v-model="task.name"></md-textarea>
             <span class="md-error">Enter your task here</span>
           </md-field>
@@ -34,7 +34,7 @@ import { ITaskListObserver } from "../models/itasklistobserver";
 })
 export default class TaskVue extends Vue {
 
-  private toggleNameEdit = false;
+  toggleNameEdit = false;
 
   editTaskName() {
     this.toggleNameEdit = !this.toggleNameEdit;
