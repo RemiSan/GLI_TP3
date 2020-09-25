@@ -2,14 +2,14 @@
     <md-card>
       <md-card-header>
         <md-card-header-text>
-          <div class="md-title">{{task.name}}</div>
-          <div class="md-subhead">Todo</div>
+          <md-card-content>
+            {{task.name}}
+          </md-card-content>
         </md-card-header-text>
       </md-card-header>
 
       <md-card-actions>
-        <md-button>Action</md-button>
-        <md-button>Action</md-button>
+        <md-checkbox v-model="task.done">Done</md-checkbox>
       </md-card-actions>
     </md-card>
     
@@ -31,11 +31,10 @@ export default class TaskVue extends Vue {}
 </script>
 
 <style lang="css" scoped>
-  .md-card {
-    width: 400px;
-    margin: 4px;
-    
-    margin-left: auto;
-    margin-right: auto;
-  }
+.md-card {
+  width: 400px;
+  margin: 4px;
+  margin-left: auto;
+  margin-right: auto;
+}
 </style>
