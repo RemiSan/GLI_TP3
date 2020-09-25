@@ -16,20 +16,21 @@
       </md-card-header>
 
       <md-card-actions>
+        <md-button class="md-icon-button md-accent" v-on:click="deleteTask()">
+          <md-icon>thumb_up</md-icon>
+        </md-button>
         <md-checkbox v-model="task.done">Done</md-checkbox>
       </md-card-actions>
     </md-card>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
 import { Task } from "../models/task";
+import { ITaskListObserver } from "../models/itasklistobserver";
 
 @Component({
   components: {},
-  props: {
-    task: Task,
-  },
 })
 export default class TaskVue extends Vue {
 
@@ -39,6 +40,12 @@ export default class TaskVue extends Vue {
     this.toggleNameEdit = !this.toggleNameEdit;
   }
 
+  @Prop({required: true}) task!: Task
+
+  deleteTask(){
+    this.task.delete();
+    console.log('delete');
+  }
 }
 </script>
 
@@ -48,5 +55,8 @@ export default class TaskVue extends Vue {
   margin: 4px;
   margin-left: auto;
   margin-right: auto;
+}
+.md-button{
+  margin:4px;
 }
 </style>
